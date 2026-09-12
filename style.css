@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --forest: #0B1F17;
+  --forest-deep: #071510;
+  --surface: #12291F;
+  --surface-line: #1F3F30;
+  --gold: #FFC72C;
+  --blue: #2F6FED;
+  --text: #F4F6F1;
+  --text-dim: #A9BDB0;
+  --radius: 10px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--forest);
+  color:var(--text);
+  font-family:'Inter',system-ui,sans-serif;
+  line-height:1.5;
+}
+h1,h2,h3,.brand{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  margin:0;
+}
+a{color:inherit;}
+img{max-width:100%;}
+
+/* -------- Header / Nav -------- */
+header{
+  position:sticky;top:0;z-index:20;
+  background:var(--forest-deep);
+  border-bottom:1px solid var(--surface-line);
+}
+.topbar{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;
+}
+.brand{font-size:1.4rem;letter-spacing:-0.02em;}
+.brand span{color:var(--gold);}
+nav{display:flex;gap:4px;overflow-x:auto;padding:0 20px 12px;max-width:1100px;margin:0 auto;}
+.nav-btn{
+  background:none;border:none;color:var(--text-dim);
+  font-family:'Inter',sans-serif;font-weight:600;font-size:0.92rem;
+  padding:8px 14px;border-radius:999px;cursor:pointer;white-space:nowrap;
+  transition:background .15s, color .15s;
+}
+.nav-btn:hover{color:var(--text);}
+.nav-btn.active{background:var(--gold);color:var(--forest-deep);}
+
+main{max-width:1100px;margin:0 auto;padding:32px 20px 80px;}
+.view{display:none;}
+.view.active{display:block;}
+
+/* -------- Hero -------- */
+.hero{
+  display:flex;flex-wrap:wrap;gap:32px;align-items:center;
+  padding:40px 0 48px;border-bottom:1px solid var(--surface-line);margin-bottom:36px;
+}
+.hero-text{flex:1 1 340px;}
+.hero-text h1{font-size:2.6rem;line-height:1.08;letter-spacing:-0.02em;}
+.hero-text p{color:var(--text-dim);max-width:46ch;margin-top:14px;}
+.hero-stats{display:flex;gap:28px;flex:1 1 260px;flex-wrap:wrap;}
+.stat{min-width:110px;}
+.stat b{display:block;font-family:'Space Grotesk',sans-serif;font-size:2.1rem;color:var(--gold);}
+.stat span{color:var(--text-dim);font-size:0.86rem;}
+
+.section-title{font-size:1.5rem;margin-bottom:18px;}
+.section-sub{color:var(--text-dim);margin-top:-12px;margin-bottom:22px;max-width:60ch;}
+
+/* -------- Cards / grids -------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;}
+.card{
+  background:var(--surface);border:1px solid var(--surface-line);
+  border-radius:var(--radius);padding:20px;
+}
+.card h3{font-size:1.05rem;margin-bottom:6px;}
+.card p{color:var(--text-dim);font-size:0.92rem;margin:0;}
+.badge{
+  display:inline-block;font-size:0.72rem;font-weight:600;
+  padding:3px 9px;border-radius:999px;background:var(--surface-line);color:var(--text-dim);
+  margin-bottom:10px;
+}
+.badge.live{background:rgba(255,199,44,.15);color:var(--gold);}
+
+/* -------- Clash Royale clan panel -------- */
+.clan-panel{
+  background:var(--surface);border:1px solid var(--surface-line);
+  border-radius:var(--radius);padding:24px;margin-bottom:24px;
+  display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;
+}
+.clan-id{color:var(--text-dim);font-size:0.9rem;}
+.clan-id b{color:var(--gold);}
+#clan-status{font-size:0.85rem;color:var(--text-dim);}
+
+table{width:100%;border-collapse:collapse;margin-top:10px;}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--surface-line);font-size:0.92rem;}
+th{color:var(--text-dim);font-weight:600;font-size:0.8rem;}
+tr:last-child td{border-bottom:none;}
+
+/* -------- Admin -------- */
+.admin-gate{max-width:360px;margin:0 auto;text-align:center;padding:40px 0;}
+.admin-gate input{
+  width:100%;padding:11px 14px;border-radius:8px;border:1px solid var(--surface-line);
+  background:var(--surface);color:var(--text);margin:14px 0;font-size:1rem;
+}
+button.primary{
+  background:var(--gold);color:var(--forest-deep);border:none;
+  padding:11px 20px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.95rem;
+}
+button.ghost{
+  background:none;border:1px solid var(--surface-line);color:var(--text);
+  padding:9px 16px;border-radius:8px;cursor:pointer;font-size:0.9rem;
+}
+.admin-row{display:flex;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap;}
+.admin-row input{flex:1;min-width:120px;padding:8px 10px;border-radius:6px;border:1px solid var(--surface-line);background:var(--forest-deep);color:var(--text);}
+.notice{
+  background:rgba(47,111,237,.12);border:1px solid rgba(47,111,237,.35);
+  padding:14px 16px;border-radius:8px;font-size:0.88rem;color:var(--text-dim);margin-bottom:20px;
+}
+footer{border-top:1px solid var(--surface-line);color:var(--text-dim);font-size:0.85rem;padding:24px 20px;text-align:center;}

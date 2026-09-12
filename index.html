@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NdosseSport — L'esport gabonais</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="brand">Ndosse<span>Sport</span></div>
+    <button class="ghost" id="admin-shortcut" onclick="goTo('admin')">Administration</button>
+  </div>
+  <nav id="main-nav">
+    <button class="nav-btn active" data-view="accueil">Accueil</button>
+    <button class="nav-btn" data-view="clashroyale">Clash Royale</button>
+    <button class="nav-btn" data-view="jeux">Autres jeux</button>
+    <button class="nav-btn" data-view="joueurs">Joueurs gabonais</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ACCUEIL -->
+  <section id="view-accueil" class="view active">
+    <div class="hero">
+      <div class="hero-text">
+        <h1>La scène esport du Gabon, réunie au même endroit.</h1>
+        <p>Suivi du clan Clash Royale gabonais, classement des joueurs et bientôt les rubriques EA Sports FC 27, GTA V et Naruto Storm Connections.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b id="stat-membres">—</b><span>Membres du clan</span></div>
+        <div class="stat"><b id="stat-joueurs">—</b><span>Joueurs référencés</span></div>
+        <div class="stat"><b>4</b><span>Rubriques jeux</span></div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Rubriques</h2>
+    <div class="grid">
+      <div class="card"><span class="badge live">En ligne</span><h3>Clash Royale</h3><p>Clan #GJ902098 — membres et classement.</p></div>
+      <div class="card"><span class="badge">À venir</span><h3>EA Sports FC 27</h3><p>Tournois et classement des joueurs gabonais.</p></div>
+      <div class="card"><span class="badge">À venir</span><h3>GTA V</h3><p>Communauté et évènements en ligne.</p></div>
+      <div class="card"><span class="badge">À venir</span><h3>Naruto Storm Connections</h3><p>Tournois 1v1 et classement.</p></div>
+    </div>
+  </section>
+
+  <!-- CLASH ROYALE -->
+  <section id="view-clashroyale" class="view">
+    <h2 class="section-title">Clash Royale</h2>
+    <p class="section-sub">Données du clan gabonais, mises à jour automatiquement lorsque le proxy est configuré (voir README).</p>
+
+    <div class="clan-panel">
+      <div>
+        <div class="clan-id">Clan suivi : <b id="clan-tag-display">#GJ902098</b></div>
+        <div id="clan-status">Chargement…</div>
+      </div>
+      <button class="ghost" onclick="chargerClan()">Actualiser maintenant</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>#</th><th>Pseudo</th><th>Rôle</th><th>Trophées</th><th>Contribution</th></tr>
+      </thead>
+      <tbody id="clan-members-body">
+        <tr><td colspan="5">—</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- AUTRES JEUX -->
+  <section id="view-jeux" class="view">
+    <h2 class="section-title">Autres jeux</h2>
+    <p class="section-sub">Ces rubriques seront configurées prochainement.</p>
+    <div class="grid" id="jeux-grid"></div>
+  </section>
+
+  <!-- JOUEURS -->
+  <section id="view-joueurs" class="view">
+    <h2 class="section-title">Joueurs gabonais</h2>
+    <p class="section-sub">Liste ouverte à tous les jeux, tenue à jour par l'administration.</p>
+    <table>
+      <thead><tr><th>Pseudo</th><th>Jeu</th><th>Ville</th></tr></thead>
+      <tbody id="players-body"><tr><td colspan="3">Chargement…</td></tr></tbody>
+    </table>
+  </section>
+
+  <!-- ADMIN -->
+  <section id="view-admin" class="view">
+    <h2 class="section-title">Administration</h2>
+    <div id="admin-locked" class="admin-gate">
+      <p class="section-sub">Accès réservé à l'administrateur du site.</p>
+      <input type="password" id="admin-pass" placeholder="Mot de passe">
+      <br>
+      <button class="primary" onclick="tryAdminLogin()">Se connecter</button>
+      <p id="admin-error" style="color:#ff8080;font-size:0.85rem;"></p>
+    </div>
+
+    <div id="admin-panel" style="display:none;">
+      <div class="notice">
+        Ce panneau modifie la liste de joueurs uniquement dans <b>ce navigateur</b>.
+        Pour que le changement soit visible par tous les visiteurs du site, exportez
+        le fichier ci-dessous et remplacez <code>data/players.json</code> dans votre
+        dépôt GitHub, puis validez (commit).
+      </div>
+
+      <h3>Ajouter un joueur</h3>
+      <div class="admin-row">
+        <input id="np-pseudo" placeholder="Pseudo">
+        <input id="np-jeu" placeholder="Jeu (ex: Clash Royale)">
+        <input id="np-ville" placeholder="Ville">
+        <button class="primary" onclick="ajouterJoueur()">Ajouter</button>
+      </div>
+
+      <table>
+        <thead><tr><th>Pseudo</th><th>Jeu</th><th>Ville</th><th></th></tr></thead>
+        <tbody id="admin-players-body"></tbody>
+      </table>
+
+      <p style="margin-top:20px;">
+        <button class="ghost" onclick="exporterJoueurs()">Télécharger players.json à jour</button>
+        <button class="ghost" onclick="adminLogout()">Se déconnecter</button>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>NdosseSport — ndossesport.com</footer>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
